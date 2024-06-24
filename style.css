@@ -1,0 +1,39 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    height: 100vh;
+    width: 100vh;
+    outline: 1px solid green;
+}
+
+#options {
+    height: 10%;
+    outline: 1px solid red;
+}
+
+.container {
+    padding: 10px;
+    height: 90%;
+}
+
+#board {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.field {
+    flex: 1;
+    outline: 1px solid blue;
+}
