@@ -1,24 +1,46 @@
+// client side script for etch-a-sketch
 
-
+// globals
 const btnSize = document.querySelector('#btn_size');
 const board = document.querySelector('#board');
+const btnReset = document.querySelector('#btn_reset');
+let size = 16
 
 
 btnSize.addEventListener('click', () => {
-    size = prompt('Grid Size?', 16);
+    let valid = false;
+
+    while (!valid) { // prompt validation
+        size = prompt('Grid Size?', 16);
+        if (size >= 16 && size <= 100) {
+            valid = true;
+        }
+    }
+
+    while (board.firstChild) { // delete existing board
+        board.removeChild(board.firstChild);
+    }
+    newBoard(size);
+});
+
+
+btnReset.addEventListener('click', () => {
     while (board.firstChild) {
         board.removeChild(board.firstChild);
     }
-    console.log(size);
     newBoard(size);
 });
 
 
 board.addEventListener('mouseover', 
-    (event) => {event.target.style.backgroundColor = 'black'});
+    (event) => {
+        if (event.target.classList.contains('field')) {
+            event.target.style.backgroundColor = 'grey';
+        }
+    });
 
 
-function newBoard(size=16) {
+function newBoard(size) {
     for (let r = 0; r < size; r++) {
         const row = document.createElement('div');
         row.setAttribute('class', 'row');
@@ -32,6 +54,7 @@ function newBoard(size=16) {
     }
 };
 
-newBoard();
+// default board at page load
+newBoard(size);
 
 
